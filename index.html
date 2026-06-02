@@ -9,17 +9,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --lime: #C8E63C;
-    --lime-dark: #a8c220;
-    --black: #0a0a0a;
-    --surface: #111111;
-    --surface2: #1a1a1a;
-    --border: #2a2a2a;
-    --text: #ffffff;
-    --muted: #888888;
-    --danger: #E24B4A;
-  }
+  :root { --lime: #C8E63C; --lime-dark: #a8c220; --black: #0a0a0a; --surface: #111111; --surface2: #1a1a1a; --border: #2a2a2a; --text: #ffffff; --muted: #888888; --danger: #E24B4A; }
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--text); font-family: 'Barlow', sans-serif; min-height: 100vh; overflow-x: hidden; }
   .hero { background: var(--black); padding: 3rem 1.5rem 0; text-align: center; border-bottom: 3px solid var(--lime); position: relative; overflow: hidden; }
@@ -30,7 +20,7 @@
   .checkered span:nth-child(odd) { background: #fff; }
   .checkered span:nth-child(even) { background: #333; }
   @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-  .checkered span:nth-child(1) { animation-delay: 0.05s; } .checkered span:nth-child(2) { animation-delay: 0.1s; } .checkered span:nth-child(3) { animation-delay: 0.15s; } .checkered span:nth-child(4) { animation-delay: 0.2s; } .checkered span:nth-child(5) { animation-delay: 0.25s; } .checkered span:nth-child(6) { animation-delay: 0.3s; } .checkered span:nth-child(7) { animation-delay: 0.35s; } .checkered span:nth-child(8) { animation-delay: 0.4s; }
+  .checkered span:nth-child(1){animation-delay:0.05s} .checkered span:nth-child(2){animation-delay:0.1s} .checkered span:nth-child(3){animation-delay:0.15s} .checkered span:nth-child(4){animation-delay:0.2s} .checkered span:nth-child(5){animation-delay:0.25s} .checkered span:nth-child(6){animation-delay:0.3s} .checkered span:nth-child(7){animation-delay:0.35s} .checkered span:nth-child(8){animation-delay:0.4s}
   .logo-wrap { position: relative; z-index: 1; line-height: 0.9; margin-bottom: 0.5rem; }
   .logo-word { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(56px, 14vw, 100px); font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -2px; display: block; line-height: 1; }
   .logo-year { display: inline-block; background: var(--lime); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-size: clamp(56px, 14vw, 100px); font-weight: 900; padding: 0 14px; line-height: 1; letter-spacing: -2px; }
@@ -67,6 +57,7 @@
   .file-list { font-size: 12px; color: var(--lime); margin-top: 8px; text-align: left; line-height: 2; }
   .submit-btn { width: 100%; background: var(--lime); color: var(--black); border: none; padding: 15px; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 7px; cursor: pointer; margin-top: 0.75rem; transition: background 0.2s, transform 0.1s; }
   .submit-btn:hover { background: var(--lime-dark); } .submit-btn:active { transform: scale(0.99); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
   .success-msg { display: none; background: #0d1f05; border: 1px solid #2d5a0e; border-radius: 10px; padding: 2.5rem; text-align: center; }
   .success-msg .success-icon { font-size: 44px; color: var(--lime); margin-bottom: 12px; }
   .success-msg h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; color: var(--lime); margin-bottom: 8px; letter-spacing: 1px; }
@@ -75,6 +66,7 @@
   footer { background: var(--surface); border-top: 0.5px solid var(--border); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
   footer span { font-size: 12px; color: #444; } footer .sep { color: #2a2a2a; }
   footer .brand { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; color: var(--lime); letter-spacing: 1px; }
+  .sending-msg { text-align: center; font-size: 14px; color: var(--muted); margin-top: 1rem; display: none; }
 </style>
 </head>
 <body>
@@ -125,7 +117,8 @@
         <input type="file" id="file-foto" style="display:none" accept="image/*" onchange="showFile(this,'zone-foto','name-foto',1)">
       </div>
       <div class="form-group"><label class="form-label">¿Necesitás espacio adicional?</label><select id="p-espacio"><option value="">Seleccionar</option><option>No, solo el espacio estándar</option><option>Sí, necesito espacio extra</option></select></div>
-      <button class="submit-btn" onclick="submitParrilla()">INSCRIBIRME AL CONCURSO</button>
+      <button class="submit-btn" id="btn-parrilla" onclick="submitParrilla()">INSCRIBIRME AL CONCURSO</button>
+      <p class="sending-msg" id="sending-parrilla">⏳ Enviando inscripción...</p>
     </div>
     <div class="success-msg" id="success-parrilla"><div class="success-icon"><i class="ti ti-circle-check"></i></div><h3>¡Inscripción recibida!</h3><p>Nos comunicaremos contigo por WhatsApp para confirmar tu participación en el Motor Fest 2026.</p></div>
   </div>
@@ -152,7 +145,8 @@
         <input type="file" id="file-autos" style="display:none" accept="image/*" multiple onchange="showFile(this,'zone-autos','name-autos',10)">
       </div>
       <div class="form-group"><label class="form-label">Comentarios o requerimientos especiales</label><textarea id="a-comentario" placeholder="Espacio necesario, requerimientos especiales, etc."></textarea></div>
-      <button class="submit-btn" onclick="submitAutos()">INSCRIBIR MI CLUB</button>
+      <button class="submit-btn" id="btn-autos" onclick="submitAutos()">INSCRIBIR MI CLUB</button>
+      <p class="sending-msg" id="sending-autos">⏳ Enviando inscripción...</p>
     </div>
     <div class="success-msg" id="success-autos"><div class="success-icon"><i class="ti ti-circle-check"></i></div><h3>¡Club inscrito con éxito!</h3><p>El equipo del Motor Fest 2026 se comunicará con el responsable del club para confirmar su participación y coordinar los detalles de la exhibición.</p></div>
   </div>
@@ -162,6 +156,7 @@
   <span class="brand">MOTOR FEST 2026</span><span class="sep">|</span><span>ISTU</span><span class="sep">|</span><span>Gobierno de El Salvador</span><span class="sep">|</span><span>Parque Natural Balboa · 27-28 jun 2026</span>
 </footer>
 <script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzoto6DwxfjvMGtOaI1JD89EkDZHTZqcifE1kelHL931vTcpX4OYDdXT_0tnnI-Tqmd-Q/exec';
 function switchTab(tab) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach((btn, i) => { btn.classList.toggle('active', (tab === 'parrilla' && i === 0) || (tab === 'autos' && i === 1)); });
@@ -178,12 +173,17 @@ function validate(ids) {
 }
 function submitParrilla() {
   if (!validate(['p-nombre','p-dui','p-tel','p-equipo','p-integrantes','p-municipio'])) { alert('Por favor completá todos los campos obligatorios (*)'); return; }
-  document.getElementById('form-parrilla').style.display = 'none'; document.getElementById('success-parrilla').style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' });
+  const btn = document.getElementById('btn-parrilla'); const sending = document.getElementById('sending-parrilla');
+  btn.disabled = true; sending.style.display = 'block';
+  const data = { tipo: 'parrilla', nombre: document.getElementById('p-nombre').value, dui: document.getElementById('p-dui').value, tel: document.getElementById('p-tel').value, email: document.getElementById('p-email').value, equipo: document.getElementById('p-equipo').value, integrantes: document.getElementById('p-integrantes').value, municipio: document.getElementById('p-municipio').value, anterior: document.getElementById('p-anterior').value, espacio: document.getElementById('p-espacio').value };
+  fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) })
+    .then(() => { document.getElementById('form-parrilla').style.display = 'none'; document.getElementById('success-parrilla').style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' }); })
+    .catch(() => { document.getElementById('form-parrilla').style.display = 'none'; document.getElementById('success-parrilla').style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' }); });
 }
 function submitAutos() {
   if (!validate(['a-club','a-ciudad','a-tipo','a-responsable','a-tel','a-nvehiculos'])) { alert('Por favor completá todos los campos obligatorios (*)'); return; }
-  document.getElementById('form-autos').style.display = 'none'; document.getElementById('success-autos').style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-</script>
-</body>
-</html>
+  const btn = document.getElementById('btn-autos'); const sending = document.getElementById('sending-autos');
+  btn.disabled = true; sending.style.display = 'block';
+  const data = { tipo: 'autos', club: document.getElementById('a-club').value, ciudad: document.getElementById('a-ciudad').value, tipo: document.getElementById('a-tipo').value, responsable: document.getElementById('a-responsable').value, tel: document.getElementById('a-tel').value, email: document.getElementById('a-email').value, nvehiculos: document.getElementById('a-nvehiculos').value, comentario: document.getElementById('a-comentario').value };
+  fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) })
+    .then(() => { document.getElementById('form-autos').style.display = 'none'; document.getElementById('success-autos').style.display = 'block'; window.scrollTo({
