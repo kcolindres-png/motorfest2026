@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motor Fest 2026 — Parque Natural Balboa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --lime: #C8E63C;
+    --lime-dark: #a8c220;
+    --black: #0a0a0a;
+    --surface: #111111;
+    --surface2: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #ffffff;
+    --muted: #888888;
+    --danger: #E24B4A;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--text); font-family: 'Barlow', sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .hero { background: var(--black); padding: 3rem 1.5rem 0; text-align: center; border-bottom: 3px solid var(--lime); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--lime); }
+  .hero-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Barlow Condensed', sans-serif; font-size: 220px; font-weight: 900; color: rgba(255,255,255,0.02); white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: -5px; }
+  .checkered { display: flex; justify-content: center; gap: 3px; margin-bottom: 1.25rem; }
+  .checkered span { width: 20px; height: 20px; animation: fadeIn 0.3s both; }
+  .checkered span:nth-child(odd) { background: #fff; }
+  .checkered span:nth-child(even) { background: #333; }
+  @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+  .checkered span:nth-child(1) { animation-delay: 0.05s; } .checkered span:nth-child(2) { animation-delay: 0.1s; } .checkered span:nth-child(3) { animation-delay: 0.15s; } .checkered span:nth-child(4) { animation-delay: 0.2s; } .checkered span:nth-child(5) { animation-delay: 0.25s; } .checkered span:nth-child(6) { animation-delay: 0.3s; } .checkered span:nth-child(7) { animation-delay: 0.35s; } .checkered span:nth-child(8) { animation-delay: 0.4s; }
+  .logo-wrap { position: relative; z-index: 1; line-height: 0.9; margin-bottom: 0.5rem; }
+  .logo-word { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(56px, 14vw, 100px); font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -2px; display: block; line-height: 1; }
+  .logo-year { display: inline-block; background: var(--lime); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-size: clamp(56px, 14vw, 100px); font-weight: 900; padding: 0 14px; line-height: 1; letter-spacing: -2px; }
+  .tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; color: var(--lime); letter-spacing: 4px; text-transform: uppercase; margin: 1rem 0 1.5rem; font-weight: 600; position: relative; z-index: 1; }
+  .event-pills { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; position: relative; z-index: 1; }
+  .pill { display: flex; align-items: center; gap: 8px; background: var(--surface2); border: 0.5px solid var(--border); border-radius: 999px; padding: 7px 16px; font-size: 14px; color: #ccc; }
+  .pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+  .tabs-bar { display: flex; justify-content: center; border-bottom: 1px solid var(--border); position: relative; z-index: 1; }
+  .tab-btn { padding: 12px 24px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -1px; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+  .tab-btn.active { color: var(--lime); border-bottom-color: var(--lime); }
+  .tab-btn:hover:not(.active) { color: #ccc; }
+  .tab-content { display: none; } .tab-content.active { display: block; }
+  .form-section { max-width: 620px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+  .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--lime); font-weight: 600; margin-bottom: 1.5rem; }
+  .note-box { background: var(--surface); border-left: 3px solid var(--lime); border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 1.75rem; }
+  .note-box strong { color: var(--lime); font-weight: 600; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+  .form-group { margin-bottom: 1.1rem; }
+  .form-label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 6px; font-weight: 500; letter-spacing: 0.5px; }
+  .req { color: var(--lime); margin-left: 2px; }
+  .badge-small { display: inline-block; background: rgba(200,230,60,0.12); color: var(--lime); font-size: 10px; padding: 2px 7px; border-radius: 99px; border: 0.5px solid rgba(200,230,60,0.3); font-weight: 600; margin-left: 6px; vertical-align: middle; }
+  input[type=text], input[type=email], input[type=tel], select, textarea { width: 100%; background: var(--surface); border: 0.5px solid var(--border); color: var(--text); padding: 11px 14px; border-radius: 7px; font-size: 14px; font-family: 'Barlow', sans-serif; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+  input:focus, select:focus, textarea:focus { border-color: var(--lime); }
+  input.error, select.error { border-color: var(--danger) !important; }
+  select { cursor: pointer; } select option { background: #1a1a1a; }
+  textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+  .upload-zone { border: 1px dashed #3a3a3a; border-radius: 8px; padding: 1.5rem; text-align: center; cursor: pointer; background: var(--surface); transition: border-color 0.2s, background 0.2s; }
+  .upload-zone:hover { border-color: var(--lime); background: rgba(200,230,60,0.04); }
+  .upload-zone.has-file { border-color: var(--lime); background: rgba(200,230,60,0.06); }
+  .upload-zone .upload-icon { font-size: 26px; color: #444; margin-bottom: 6px; }
+  .upload-zone p { font-size: 13px; color: #555; }
+  .upload-zone.has-file p { color: var(--muted); }
+  .file-list { font-size: 12px; color: var(--lime); margin-top: 8px; text-align: left; line-height: 2; }
+  .submit-btn { width: 100%; background: var(--lime); color: var(--black); border: none; padding: 15px; font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 7px; cursor: pointer; margin-top: 0.75rem; transition: background 0.2s, transform 0.1s; }
+  .submit-btn:hover { background: var(--lime-dark); } .submit-btn:active { transform: scale(0.99); }
+  .success-msg { display: none; background: #0d1f05; border: 1px solid #2d5a0e; border-radius: 10px; padding: 2.5rem; text-align: center; }
+  .success-msg .success-icon { font-size: 44px; color: var(--lime); margin-bottom: 12px; }
+  .success-msg h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; color: var(--lime); margin-bottom: 8px; letter-spacing: 1px; }
+  .success-msg p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  hr { border: none; border-top: 0.5px solid #1e1e1e; }
+  footer { background: var(--surface); border-top: 0.5px solid var(--border); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  footer span { font-size: 12px; color: #444; } footer .sep { color: #2a2a2a; }
+  footer .brand { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; color: var(--lime); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-bg-text">MOTOR</div>
+  <div class="checkered"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="logo-wrap">
+    <span class="logo-word">MOTOR</span>
+    <span class="logo-word">FEST <span class="logo-year">2026</span></span>
+  </div>
+  <p class="tagline">El espectáculo sobre ruedas que no te podés perder</p>
+  <div class="event-pills">
+    <div class="pill"><span class="dot"></span>27 y 28 de junio 2026</div>
+    <div class="pill"><span class="dot"></span>2:00 PM – 7:00 PM</div>
+    <div class="pill"><span class="dot"></span>Parque Natural Balboa</div>
+  </div>
+  <div class="tabs-bar">
+    <button class="tab-btn active" onclick="switchTab('parrilla')">🔥 Concurso de Parrilla</button>
+    <button class="tab-btn" onclick="switchTab('autos')">🚗 Exhibición Autos / Motos</button>
+  </div>
+</header>
+<div id="tab-parrilla" class="tab-content active">
+  <div class="form-section">
+    <p class="section-label">Inscripción — Concurso de Parrilla</p>
+    <div id="form-parrilla">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Nombre completo<span class="req">*</span></label><input type="text" id="p-nombre" placeholder="Tu nombre completo"></div>
+        <div class="form-group"><label class="form-label">DUI<span class="req">*</span></label><input type="text" id="p-dui" placeholder="00000000-0"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">WhatsApp<span class="req">*</span></label><input type="tel" id="p-tel" placeholder="+503 0000-0000"></div>
+        <div class="form-group"><label class="form-label">Correo electrónico</label><input type="email" id="p-email" placeholder="correo@ejemplo.com"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Nombre del equipo<span class="req">*</span></label><input type="text" id="p-equipo" placeholder="Ej: Los Asadores"></div>
+        <div class="form-group"><label class="form-label">N° de integrantes<span class="req">*</span></label><select id="p-integrantes"><option value="">Seleccionar</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5 o más</option></select></div>
+      </div>
+      <div class="form-group"><label class="form-label">Municipio de procedencia<span class="req">*</span></label><input type="text" id="p-municipio" placeholder="Ej: San Salvador"></div>
+      <div class="form-group"><label class="form-label">¿Participaste en ediciones anteriores?</label><select id="p-anterior"><option value="">Seleccionar</option><option>Sí, he participado antes</option><option>No, es mi primera vez</option></select></div>
+      <div class="form-group">
+        <label class="form-label">Carnet de salubridad vigente<span class="req">*</span> <span class="badge-small">Obligatorio</span></label>
+        <div class="upload-zone" id="zone-salud" onclick="document.getElementById('file-salud').click()"><div class="upload-icon"><i class="ti ti-upload"></i></div><p>Tocá para subir foto o PDF del carnet</p><div class="file-list" id="name-salud"></div></div>
+        <input type="file" id="file-salud" style="display:none" accept="image/*,.pdf" onchange="showFile(this,'zone-salud','name-salud',1)">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Foto de tu producto / platillo<span class="req">*</span></label>
+        <div class="upload-zone" id="zone-foto" onclick="document.getElementById('file-foto').click()"><div class="upload-icon"><i class="ti ti-photo"></i></div><p>Tu mejor platillo a la parrilla</p><div class="file-list" id="name-foto"></div></div>
+        <input type="file" id="file-foto" style="display:none" accept="image/*" onchange="showFile(this,'zone-foto','name-foto',1)">
+      </div>
+      <div class="form-group"><label class="form-label">¿Necesitás espacio adicional?</label><select id="p-espacio"><option value="">Seleccionar</option><option>No, solo el espacio estándar</option><option>Sí, necesito espacio extra</option></select></div>
+      <button class="submit-btn" onclick="submitParrilla()">INSCRIBIRME AL CONCURSO</button>
+    </div>
+    <div class="success-msg" id="success-parrilla"><div class="success-icon"><i class="ti ti-circle-check"></i></div><h3>¡Inscripción recibida!</h3><p>Nos comunicaremos contigo por WhatsApp para confirmar tu participación en el Motor Fest 2026.</p></div>
+  </div>
+</div>
+<div id="tab-autos" class="tab-content">
+  <div class="form-section">
+    <p class="section-label">Inscripción — Exhibición de Autos y Motos</p>
+    <div class="note-box">Agradecemos tu interés en participar en MotorFest 2026. Favor completar la siguiente información de manera clara y correcta.<br><strong>Fecha:</strong> Sábado 27 y Domingo 28 de junio · <strong>Lugar:</strong> Parque Natural Balboa</div>
+    <div id="form-autos">
+      <div class="form-group"><label class="form-label">Nombre del Club<span class="req">*</span></label><input type="text" id="a-club" placeholder="Ej: Classic Cars El Salvador"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Ciudad / Departamento<span class="req">*</span></label><select id="a-ciudad"><option value="">Seleccionar</option><option>San Salvador</option><option>Santa Ana</option><option>San Miguel</option><option>La Libertad</option><option>Sonsonate</option><option>Chalatenango</option><option>Cuscatlán</option><option>La Paz</option><option>Cabañas</option><option>San Vicente</option><option>Usulután</option><option>Morazán</option><option>La Unión</option><option>Ahuachapán</option></select></div>
+        <div class="form-group"><label class="form-label">Tipo de vehículos<span class="req">*</span></label><select id="a-tipo"><option value="">Seleccionar</option><option>Autos clásicos</option><option>Autos modificados</option><option>Motos clásicas</option><option>Motos deportivas</option><option>Motos custom / chopper</option><option>Mixto (autos y motos)</option><option>Otro</option></select></div>
+      </div>
+      <div class="form-group"><label class="form-label">Nombre del responsable del club<span class="req">*</span></label><input type="text" id="a-responsable" placeholder="Nombre completo"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">WhatsApp de contacto<span class="req">*</span></label><input type="tel" id="a-tel" placeholder="+503 0000-0000"></div>
+        <div class="form-group"><label class="form-label">Correo electrónico</label><input type="email" id="a-email" placeholder="correo@ejemplo.com"></div>
+      </div>
+      <div class="form-group"><label class="form-label">N° de vehículos que traerán<span class="req">*</span></label><select id="a-nvehiculos"><option value="">Seleccionar</option><option>1 - 3 vehículos</option><option>4 - 7 vehículos</option><option>8 - 10 vehículos</option><option>Más de 10 vehículos</option></select></div>
+      <div class="form-group">
+        <label class="form-label">Fotos de los vehículos del club<span class="req">*</span> <span class="badge-small">Hasta 10 fotos · 10MB c/u</span></label>
+        <div class="upload-zone" id="zone-autos" onclick="document.getElementById('file-autos').click()"><div class="upload-icon"><i class="ti ti-car"></i></div><p>Subí fotos de los autos o motos del club</p><div class="file-list" id="name-autos"></div></div>
+        <input type="file" id="file-autos" style="display:none" accept="image/*" multiple onchange="showFile(this,'zone-autos','name-autos',10)">
+      </div>
+      <div class="form-group"><label class="form-label">Comentarios o requerimientos especiales</label><textarea id="a-comentario" placeholder="Espacio necesario, requerimientos especiales, etc."></textarea></div>
+      <button class="submit-btn" onclick="submitAutos()">INSCRIBIR MI CLUB</button>
+    </div>
+    <div class="success-msg" id="success-autos"><div class="success-icon"><i class="ti ti-circle-check"></i></div><h3>¡Club inscrito con éxito!</h3><p>El equipo del Motor Fest 2026 se comunicará con el responsable del club para confirmar su participación y coordinar los detalles de la exhibición.</p></div>
+  </div>
+</div>
+<hr>
+<footer>
+  <span class="brand">MOTOR FEST 2026</span><span class="sep">|</span><span>ISTU</span><span class="sep">|</span><span>Gobierno de El Salvador</span><span class="sep">|</span><span>Parque Natural Balboa · 27-28 jun 2026</span>
+</footer>
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => { btn.classList.toggle('active', (tab === 'parrilla' && i === 0) || (tab === 'autos' && i === 1)); });
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+function showFile(input, zoneId, nameId, maxFiles) {
+  const zone = document.getElementById(zoneId); const nameEl = document.getElementById(nameId);
+  if (input.files && input.files.length > 0) { const files = Array.from(input.files).slice(0, maxFiles); zone.classList.add('has-file'); nameEl.innerHTML = files.map(f => '<i class="ti ti-file" style="font-size:12px"></i> ' + f.name).join('<br>'); }
+}
+function validate(ids) {
+  let ok = true;
+  ids.forEach(id => { const el = document.getElementById(id); if (!el) return; el.classList.remove('error'); if (!el.value.trim()) { el.classList.add('error'); ok = false; } });
+  return ok;
+}
+function submitParrilla() {
+  if (!validate(['p-nombre','p-dui','p-tel','p-equipo','p-integrantes','p-municipio'])) { alert('Por favor completá todos los campos obligatorios (*)'); return; }
+  document.getElementById('form-parrilla').style.display = 'none'; document.getElementById('success-parrilla').style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function submitAutos() {
+  if (!validate(['a-club','a-ciudad','a-tipo','a-responsable','a-tel','a-nvehiculos'])) { alert('Por favor completá todos los campos obligatorios (*)'); return; }
+  document.getElementById('form-autos').style.display = 'none'; document.getElementById('success-autos').style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
