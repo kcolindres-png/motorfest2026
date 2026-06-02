@@ -54,6 +54,7 @@
   .upload-label.has-file .upload-hint { color: var(--lime); }
   .thumb-wrap { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 10px; }
   .thumb-wrap img { width: 72px; height: 72px; object-fit: cover; border-radius: 6px; border: 1px solid var(--lime); }
+  .upload-progress { font-size: 12px; color: var(--lime); margin-top: 6px; display: none; }
   .submit-btn { width: 100%; background: var(--lime); color: var(--black); border: none; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 7px; cursor: pointer; margin-top: 1rem; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
   .submit-btn:active { opacity: 0.85; }
   .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -110,8 +111,10 @@
           <i class="ti ti-id-badge upload-icon-big"></i>
           <span class="upload-hint">Tocá para tomar foto o seleccionar archivo</span>
           <div class="thumb-wrap" id="thumb-salud"></div>
+          <span class="upload-progress" id="prog-salud">⏳ Subiendo...</span>
         </label>
-        <input type="file" id="file-salud" accept="image/*,application/pdf" style="position:fixed;top:-999px;left:-999px;opacity:0;" onchange="handleFile(this,'lbl-salud','thumb-salud')">
+        <input type="file" id="file-salud" accept="image/*,application/pdf" style="position:fixed;top:-999px;left:-999px;opacity:0;" onchange="handleFile(this,'lbl-salud','thumb-salud','prog-salud','url-salud')">
+        <input type="hidden" id="url-salud">
       </div>
       <div class="form-group">
         <label class="form-label">Foto de tu producto / platillo</label>
@@ -119,10 +122,11 @@
           <i class="ti ti-camera upload-icon-big"></i>
           <span class="upload-hint">Tocá para tomar foto o seleccionar de galería</span>
           <div class="thumb-wrap" id="thumb-foto"></div>
+          <span class="upload-progress" id="prog-foto">⏳ Subiendo...</span>
         </label>
-        <input type="file" id="file-foto" accept="image/*" style="position:fixed;top:-999px;left:-999px;opacity:0;" onchange="handleFile(this,'lbl-foto','thumb-foto')">
+        <input type="file" id="file-foto" accept="image/*" style="position:fixed;top:-999px;left:-999px;opacity:0;" onchange="handleFile(this,'lbl-foto','thumb-foto','prog-foto','url-foto')">
+        <input type="hidden" id="url-foto">
       </div>
-      <div class="form-group"><label class="form-label">¿Necesitás espacio adicional?</label><select id="p-espacio"><option value="">Seleccionar</option><option>No, solo el espacio estándar</option><option>Sí, necesito espacio extra</option></select></div>
       <button class="submit-btn" id="btn-parrilla" onclick="submitParrilla()">INSCRIBIRME COMO PARRILLERO</button>
       <p class="sending-msg" id="sending-parrilla">⏳ Enviando tu inscripción...</p>
     </div>
@@ -155,8 +159,10 @@
           <i class="ti ti-car upload-icon-big"></i>
           <span class="upload-hint">Tocá para fotografiar o subir fotos</span>
           <div class="thumb-wrap" id="thumb-autos"></div>
+          <span class="upload-progress" id="prog-autos">⏳ Subiendo...</span>
         </label>
-        <input type="file" id="file-autos" accept="image/*" multiple style="position:fixed;top:-999px;left:-999px;opacity:0;" onchange="handleFile(this,'lbl-autos','thumb-autos')">
+        <input type="file" id="file-autos" accept="image/*" multiple style="position:fixed;top:-999px;left:-999px;opacity:0;" onchange="handleFileMultiple(this,'lbl-autos','thumb-autos','prog-autos','url-autos')">
+        <input type="hidden" id="url-autos">
       </div>
       <div class="form-group"><label class="form-label">Comentarios o requerimientos especiales</label><textarea id="a-comentario" placeholder="Espacio necesario, requerimientos, etc."></textarea></div>
       <button class="submit-btn" id="btn-autos" onclick="submitAutos()">INSCRIBIR MI CLUB</button>
@@ -178,7 +184,9 @@
 </footer>
 <iframe name="hidden-frame" style="display:none;"></iframe>
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoQrOUHRwlmp_c25bBI1uSDsIFq36uhzahqkN8VpvFZ8Zork3TZBrMgn0ZoBZYK_KHdw/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxTvOIJoZ2QQ5hE0_rnvauVNsGujy03Xq07AVaJKmJLv8NSmueCtGoGfK9VtoYoqXA68A/exec';
+const CLOUD_NAME = 'dejbxqmjd';
+const UPLOAD_PRESET = 'mlar0e13';
 function switchTab(tab) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.getElementById('tab-btn-parrilla').classList.remove('active');
@@ -188,69 +196,89 @@ function switchTab(tab) {
 }
 document.getElementById('tab-btn-parrilla').addEventListener('touchend', function(e){ e.preventDefault(); switchTab('parrilla'); });
 document.getElementById('tab-btn-autos').addEventListener('touchend', function(e){ e.preventDefault(); switchTab('autos'); });
-function handleFile(input, lblId, thumbId) {
+async function uploadToCloudinary(file) {
+  var fd = new FormData();
+  fd.append('file', file);
+  fd.append('upload_preset', UPLOAD_PRESET);
+  var res = await fetch('https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/auto/upload', { method: 'POST', body: fd });
+  var data = await res.json();
+  return data.secure_url;
+}
+async function handleFile(input, lblId, thumbId, progId, urlId) {
   if (!input.files || input.files.length === 0) return;
+  var file = input.files[0];
   var lbl = document.getElementById(lblId);
   var thumbWrap = document.getElementById(thumbId);
+  var prog = document.getElementById(progId);
+  var urlInput = document.getElementById(urlId);
   lbl.classList.add('has-file');
-  thumbWrap.innerHTML = '';
+  prog.style.display = 'block';
+  lbl.querySelector('.upload-hint').textContent = '⏳ Subiendo archivo...';
+  if (file.type.startsWith('image/')) {
+    var reader = new FileReader();
+    reader.onload = function(e) { var img = document.createElement('img'); img.src = e.target.result; thumbWrap.innerHTML = ''; thumbWrap.appendChild(img); };
+    reader.readAsDataURL(file);
+  }
+  try {
+    var url = await uploadToCloudinary(file);
+    urlInput.value = url;
+    prog.style.display = 'none';
+    lbl.querySelector('.upload-hint').textContent = '✅ ' + file.name;
+  } catch(e) {
+    prog.style.display = 'none';
+    lbl.querySelector('.upload-hint').textContent = '❌ Error al subir, intentá de nuevo';
+  }
+}
+async function handleFileMultiple(input, lblId, thumbId, progId, urlId) {
+  if (!input.files || input.files.length === 0) return;
   var files = Array.from(input.files).slice(0, 10);
-  lbl.querySelector('.upload-hint').textContent = files.length === 1 ? '✅ ' + files[0].name : '✅ ' + files.length + ' archivos seleccionados';
+  var lbl = document.getElementById(lblId);
+  var thumbWrap = document.getElementById(thumbId);
+  var prog = document.getElementById(progId);
+  var urlInput = document.getElementById(urlId);
+  lbl.classList.add('has-file');
+  prog.style.display = 'block';
+  lbl.querySelector('.upload-hint').textContent = '⏳ Subiendo ' + files.length + ' archivo(s)...';
+  thumbWrap.innerHTML = '';
   files.forEach(function(file) {
     if (file.type.startsWith('image/')) {
       var reader = new FileReader();
-      reader.onload = function(e) {
-        var img = document.createElement('img');
-        img.src = e.target.result;
-        thumbWrap.appendChild(img);
-      };
+      reader.onload = function(e) { var img = document.createElement('img'); img.src = e.target.result; thumbWrap.appendChild(img); };
       reader.readAsDataURL(file);
     }
   });
+  try {
+    var urls = await Promise.all(files.map(uploadToCloudinary));
+    urlInput.value = urls.join(', ');
+    prog.style.display = 'none';
+    lbl.querySelector('.upload-hint').textContent = '✅ ' + files.length + ' foto(s) subidas correctamente';
+  } catch(e) {
+    prog.style.display = 'none';
+    lbl.querySelector('.upload-hint').textContent = '❌ Error al subir, intentá de nuevo';
+  }
 }
 function validate(ids) {
   var ok = true;
-  ids.forEach(function(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    el.classList.remove('error');
-    if (!el.value.trim()) { el.classList.add('error'); ok = false; }
-  });
+  ids.forEach(function(id) { var el = document.getElementById(id); if (!el) return; el.classList.remove('error'); if (!el.value.trim()) { el.classList.add('error'); ok = false; } });
   return ok;
 }
 function sendViaForm(data, formId, btnId, sendingId, successId) {
   var btn = document.getElementById(btnId);
   var sending = document.getElementById(sendingId);
-  btn.disabled = true;
-  sending.style.display = 'block';
+  btn.disabled = true; sending.style.display = 'block';
   var form = document.createElement('form');
-  form.method = 'POST';
-  form.action = SCRIPT_URL;
-  form.target = 'hidden-frame';
-  form.style.display = 'none';
-  Object.keys(data).forEach(function(key) {
-    var input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = data[key];
-    form.appendChild(input);
-  });
-  document.body.appendChild(form);
-  form.submit();
-  document.body.removeChild(form);
-  setTimeout(function() {
-    document.getElementById(formId).style.display = 'none';
-    document.getElementById(successId).style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, 1500);
+  form.method = 'POST'; form.action = SCRIPT_URL; form.target = 'hidden-frame'; form.style.display = 'none';
+  Object.keys(data).forEach(function(key) { var inp = document.createElement('input'); inp.type = 'hidden'; inp.name = key; inp.value = data[key] || ''; form.appendChild(inp); });
+  document.body.appendChild(form); form.submit(); document.body.removeChild(form);
+  setTimeout(function() { document.getElementById(formId).style.display = 'none'; document.getElementById(successId).style.display = 'block'; window.scrollTo({ top: 0, behavior: 'smooth' }); }, 1500);
 }
 function submitParrilla() {
   if (!validate(['p-nombre','p-dui','p-tel','p-equipo','p-integrantes','p-municipio'])) { alert('Por favor completá todos los campos obligatorios (*)'); return; }
-  sendViaForm({ tipo:'parrilla', nombre:document.getElementById('p-nombre').value, dui:document.getElementById('p-dui').value, tel:document.getElementById('p-tel').value, email:document.getElementById('p-email').value, equipo:document.getElementById('p-equipo').value, integrantes:document.getElementById('p-integrantes').value, municipio:document.getElementById('p-municipio').value, anterior:document.getElementById('p-anterior').value, espacio:document.getElementById('p-espacio').value }, 'form-parrilla','btn-parrilla','sending-parrilla','success-parrilla');
+  sendViaForm({ tipo:'parrilla', nombre:document.getElementById('p-nombre').value, dui:document.getElementById('p-dui').value, tel:document.getElementById('p-tel').value, email:document.getElementById('p-email').value, equipo:document.getElementById('p-equipo').value, integrantes:document.getElementById('p-integrantes').value, municipio:document.getElementById('p-municipio').value, anterior:document.getElementById('p-anterior').value, foto_carnet:document.getElementById('url-salud').value, foto_platillo:document.getElementById('url-foto').value }, 'form-parrilla','btn-parrilla','sending-parrilla','success-parrilla');
 }
 function submitAutos() {
   if (!validate(['a-club','a-ciudad','a-tipo','a-responsable','a-tel','a-nvehiculos'])) { alert('Por favor completá todos los campos obligatorios (*)'); return; }
-  sendViaForm({ tipo:'autos', club:document.getElementById('a-club').value, ciudad:document.getElementById('a-ciudad').value, tipo:document.getElementById('a-tipo').value, responsable:document.getElementById('a-responsable').value, tel:document.getElementById('a-tel').value, email:document.getElementById('a-email').value, nvehiculos:document.getElementById('a-nvehiculos').value, comentario:document.getElementById('a-comentario').value }, 'form-autos','btn-autos','sending-autos','success-autos');
+  sendViaForm({ tipo:'autos', club:document.getElementById('a-club').value, ciudad:document.getElementById('a-ciudad').value, tipo:document.getElementById('a-tipo').value, responsable:document.getElementById('a-responsable').value, tel:document.getElementById('a-tel').value, email:document.getElementById('a-email').value, nvehiculos:document.getElementById('a-nvehiculos').value, comentario:document.getElementById('a-comentario').value, fotos_vehiculos:document.getElementById('url-autos').value }, 'form-autos','btn-autos','sending-autos','success-autos');
 }
 </script>
 </body>
