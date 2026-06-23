@@ -333,6 +333,24 @@ function submitAutos() {
   if (!validate(['a-club','a-ciudad','a-tipo','a-responsable','a-tel','a-nvehiculos'])) { alert('Por favor completá todos los campos obligatorios (*)'); return; }
   sendViaForm({ tipo:'autos', club:document.getElementById('a-club').value, ciudad:document.getElementById('a-ciudad').value, tipo:document.getElementById('a-tipo').value, responsable:document.getElementById('a-responsable').value, tel:document.getElementById('a-tel').value, email:document.getElementById('a-email').value, nvehiculos:document.getElementById('a-nvehiculos').value, comentario:document.getElementById('a-comentario').value, fotos_vehiculos:document.getElementById('url-autos').value }, 'form-autos','btn-autos','sending-autos','success-autos');
 }
+
+// Detectar parámetro ?club= al cargar (para QR)
+window.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const clubId = params.get('club');
+  if (clubId) {
+    switchTab('validar');
+    const found = CLUBES.find(c => c.id === clubId);
+    if (found) {
+      mostrarClub(found);
+      document.getElementById('val-input').value = found.club;
+    } else {
+      document.getElementById('val-not-found').classList.add('show');
+    }
+    setTimeout(() => window.scrollTo({top:0,behavior:'smooth'}), 100);
+  }
+});
 </script>
 </body>
 </html>
+<!-- QR DETECTOR - ya incluido en el script principal -->
