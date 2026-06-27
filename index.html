@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --lime: #C8E63C; --lime-dark: #a8c220; --black: #0a0a0a; --surface: #111111; --surface2: #1a1a1a; --border: #2a2a2a; --text: #ffffff; --muted: #888888; --danger: #E24B4A; }
+  :root { --lime: #C8E63C; --black: #0a0a0a; --surface: #111111; --surface2: #1a1a1a; --border: #2a2a2a; --text: #ffffff; --muted: #888888; --danger: #E24B4A; }
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--text); font-family: 'Barlow', sans-serif; min-height: 100vh; overflow-x: hidden; }
   .hero { background: var(--black); padding: 3rem 1.5rem 0; text-align: center; border-bottom: 3px solid var(--lime); position: relative; overflow: hidden; }
@@ -20,7 +20,7 @@
   .checkered span:nth-child(odd) { background: #fff; }
   .checkered span:nth-child(even) { background: #333; }
   @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-  .checkered span:nth-child(1){animation-delay:0.05s} .checkered span:nth-child(2){animation-delay:0.1s} .checkered span:nth-child(3){animation-delay:0.15s} .checkered span:nth-child(4){animation-delay:0.2s} .checkered span:nth-child(5){animation-delay:0.25s} .checkered span:nth-child(6){animation-delay:0.3s} .checkered span:nth-child(7){animation-delay:0.35s} .checkered span:nth-child(8){animation-delay:0.4s}
+  .checkered span:nth-child(1){animation-delay:0.05s}.checkered span:nth-child(2){animation-delay:0.1s}.checkered span:nth-child(3){animation-delay:0.15s}.checkered span:nth-child(4){animation-delay:0.2s}.checkered span:nth-child(5){animation-delay:0.25s}.checkered span:nth-child(6){animation-delay:0.3s}.checkered span:nth-child(7){animation-delay:0.35s}.checkered span:nth-child(8){animation-delay:0.4s}
   .logo-wrap { position: relative; z-index: 1; line-height: 0.9; margin-bottom: 0.5rem; }
   .logo-word { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(56px, 14vw, 100px); font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: -2px; display: block; line-height: 1; }
   .logo-year { display: inline-block; background: var(--lime); color: var(--black); font-family: 'Barlow Condensed', sans-serif; font-size: clamp(56px, 14vw, 100px); font-weight: 900; padding: 0 14px; line-height: 1; letter-spacing: -2px; }
@@ -48,7 +48,6 @@
   select { cursor: pointer; } select option { background: #1a1a1a; }
   textarea { resize: vertical; min-height: 80px; }
   .upload-label { display: block; border: 1px dashed #3a3a3a; border-radius: 8px; padding: 1.25rem; text-align: center; cursor: pointer; background: var(--surface); transition: border-color 0.2s; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
-  .upload-label:active { border-color: var(--lime); }
   .upload-label.has-file { border-color: var(--lime); background: rgba(200,230,60,0.05); }
   .upload-icon-big { font-size: 28px; color: #555; display: block; margin-bottom: 6px; }
   .upload-hint { font-size: 13px; color: #666; }
@@ -56,8 +55,7 @@
   .thumb-wrap { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-top: 10px; }
   .thumb-wrap img { width: 72px; height: 72px; object-fit: cover; border-radius: 6px; border: 1px solid var(--lime); }
   .upload-progress { font-size: 12px; color: var(--lime); margin-top: 6px; display: none; }
-  .submit-btn { width: 100%; background: var(--lime); color: var(--black); border: none; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 7px; cursor: pointer; margin-top: 1rem; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-  .submit-btn:active { opacity: 0.85; }
+  .submit-btn { width: 100%; background: var(--lime); color: var(--black); border: none; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 7px; cursor: pointer; margin-top: 1rem; touch-action: manipulation; }
   .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
   .sending-msg { text-align: center; font-size: 14px; color: var(--lime); margin-top: 1rem; display: none; }
   .success-msg { display: none; background: #0d1f05; border: 1px solid #2d5a0e; border-radius: 10px; padding: 2.5rem; text-align: center; }
@@ -70,21 +68,34 @@
   footer .brand { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; color: var(--lime); letter-spacing: 1px; }
 
   /* VALIDACIÓN */
-  .val-section { max-width: 560px; margin: 0 auto; padding: 2rem 1.5rem; }
+  .val-section { max-width: 600px; margin: 0 auto; padding: 2rem 1.5rem; }
   .val-note { background: var(--surface); border-left: 3px solid var(--lime); border-radius: 0 8px 8px 0; padding: 12px 16px; font-size: 13px; color: var(--muted); margin-bottom: 1.5rem; }
   .val-note strong { color: var(--lime); }
   .val-search { width: 100%; background: var(--surface2); border: 1.5px solid var(--lime); color: var(--text); padding: 13px 16px; border-radius: 8px; font-size: 15px; font-family: 'Barlow', sans-serif; outline: none; margin-bottom: 1.5rem; }
-  .val-card { background: var(--surface2); border: 2px solid var(--lime); border-radius: 14px; padding: 24px; display: none; margin-bottom: 1.5rem; }
+  .val-card { background: var(--surface2); border: 2px solid var(--lime); border-radius: 14px; padding: 20px; display: none; margin-bottom: 1.5rem; }
   .val-card.show { display: block; }
-  .val-status-ok { text-align: center; font-size: 3rem; margin-bottom: 8px; }
-  .val-club-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--lime); text-align: center; margin-bottom: 4px; text-transform: uppercase; }
-  .val-tipo { text-align: center; margin-bottom: 16px; }
+  .val-status-ok { text-align: center; font-size: 2.5rem; margin-bottom: 6px; }
+  .val-club-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--lime); text-align: center; margin-bottom: 4px; text-transform: uppercase; }
+  .val-tipo { text-align: center; margin-bottom: 14px; }
   .val-badge { display: inline-block; background: var(--lime); color: var(--black); font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 99px; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px; }
-  .val-info-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #2a2a2a; font-size: 14px; }
+  .val-info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #2a2a2a; font-size: 13px; }
   .val-info-row:last-of-type { border-bottom: none; }
   .val-info-label { color: var(--muted); }
   .val-info-value { font-weight: 600; color: #fff; text-align: right; }
-  .val-stamp { text-align: center; margin-top: 16px; background: var(--lime); color: var(--black); padding: 10px; border-radius: 8px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1px; }
+  .val-stamp { text-align: center; margin-top: 14px; background: var(--lime); color: var(--black); padding: 10px; border-radius: 8px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 1px; }
+
+  /* Tabla de vehículos */
+  .vehs-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; letter-spacing: 2px; color: var(--lime); font-weight: 700; margin: 16px 0 8px; text-transform: uppercase; }
+  .vehs-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 8px; }
+  .vehs-table th { background: var(--lime); color: var(--black); padding: 6px 8px; text-align: left; font-weight: 700; font-size: 11px; }
+  .vehs-table td { padding: 6px 8px; border-bottom: 1px solid #2a2a2a; color: #ddd; }
+  .vehs-table tr:nth-child(even) td { background: #1a1a1a; }
+  .placa-badge { background: #2a2a2a; color: var(--lime); font-weight: 700; padding: 2px 7px; border-radius: 4px; font-family: monospace; font-size: 12px; }
+  .dia-sab { color: #64b5f6; font-weight: 700; font-size: 11px; }
+  .dia-dom { color: #ffb74d; font-weight: 700; font-size: 11px; }
+  .dia-both { color: var(--lime); font-weight: 700; font-size: 11px; }
+  .pending-box { background: #1a1a1a; border: 1px dashed #444; border-radius: 6px; padding: 10px; text-align: center; color: var(--muted); font-size: 12px; margin: 12px 0; }
+
   .val-not-found { text-align: center; padding: 20px; color: var(--danger); font-size: 14px; display: none; }
   .val-not-found.show { display: block; }
   .val-list-title { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
@@ -171,7 +182,7 @@
 <div id="tab-autos" class="tab-content">
   <div class="form-section">
     <p class="section-label">Inscripción — Exhibición de Autos y Motos</p>
-    <div class="note-box">Agradecemos tu interés en participar en MotorFest 2026. Completá la información de manera clara y correcta.<br><strong>Fecha:</strong> 27 y 28 de junio · <strong>Lugar:</strong> Parque Natural Balboa</div>
+    <div class="note-box">Agradecemos tu interés en participar en MotorFest 2026.<br><strong>Fecha:</strong> 27 y 28 de junio · <strong>Lugar:</strong> Parque Natural Balboa</div>
     <div id="form-autos">
       <div class="form-group"><label class="form-label">Nombre del Club<span class="req">*</span></label><input type="text" id="a-club" placeholder="Ej: Classic Cars El Salvador"></div>
       <div class="form-row">
@@ -211,11 +222,11 @@
 <div id="tab-validar" class="tab-content">
   <div class="val-section">
     <p class="section-label">Validación de Participantes — Solo Personal ISTU</p>
-    <div class="val-note"><strong>Instrucciones:</strong> Buscá el nombre del club o del responsable para verificar si está confirmado como participante oficial del Motor Fest 2026.</div>
+    <div class="val-note"><strong>Instrucciones:</strong> Buscá el nombre del club o responsable para verificar participación. Al escanear el QR del pase, se carga automáticamente con la lista de vehículos y placas.</div>
     <input type="text" class="val-search" id="val-input" placeholder="🔍 Buscar club o responsable..." oninput="validarClub()" />
     <div id="val-card" class="val-card"></div>
     <div id="val-not-found" class="val-not-found">❌ Este club no está en la lista de participantes confirmados.</div>
-    <p class="val-list-title">PARTICIPANTES CONFIRMADOS (11)</p>
+    <p class="val-list-title">PARTICIPANTES CONFIRMADOS (16 CLUBS · 84 VEHÍCULOS)</p>
     <div id="val-list"></div>
   </div>
 </div>
@@ -228,38 +239,169 @@
   <span>|</span><span>Parque Natural Balboa · 27-28 jun 2026</span>
 </footer>
 <iframe name="hidden-frame" style="display:none;"></iframe>
+
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxTvOIJoZ2QQ5hE0_rnvauVNsGujy03Xq07AVaJKmJLv8NSmueCtGoGfK9VtoYoqXA68A/exec';
 const CLOUD_NAME = 'dejbxqmjd';
 const UPLOAD_PRESET = 'mlar0e13';
 
-// CLUBES CONFIRMADOS
 const CLUBES = [
-  { id:"MF2026-001", club:"Latin America Motorcycle (L.A.M.A)", responsable:"Luis Ernesto Garay", whatsapp:"50377337000", tipo:"Motos custom / chopper", vehiculos:"8 - 10 vehículos", ciudad:"San Salvador", cat:"🏍️ MOTOS" },
-  { id:"MF2026-002", club:"Limitless Car Club", responsable:"Cristhian Alexis Hernandez Flores", whatsapp:"76012291", tipo:"Autos modificados", vehiculos:"Más de 10 vehículos", ciudad:"San Salvador", cat:"🚗 AUTOS" },
-  { id:"MF2026-003", club:"Club VSTROM El Salvador ASC", responsable:"Raúl Ernesto Calderón Hernández", whatsapp:"78029760", tipo:"Motos custom / chopper", vehiculos:"8 - 10 vehículos", ciudad:"San Salvador", cat:"🏍️ MOTOS" },
-  { id:"MF2026-004", club:"Participante Individual", responsable:"Alejandro Morales", whatsapp:"78329631", tipo:"Autos modificados", vehiculos:"1 - 3 vehículos", ciudad:"San Salvador", cat:"🚗 AUTOS" },
-  { id:"MF2026-005", club:"9thGenCivicSV", responsable:"Fernando Martínez", whatsapp:"50373962561", tipo:"Autos modificados", vehiculos:"Más de 10 vehículos", ciudad:"San Salvador", cat:"🚗 AUTOS" },
-  { id:"MF2026-006", club:"Korean El Salvador", responsable:"Byron Quezada", whatsapp:"50372391225", tipo:"Autos modificados", vehiculos:"Más de 10 vehículos", ciudad:"San Salvador", cat:"🚗 AUTOS" },
-  { id:"MF2026-007", club:"Lost Tribers y Lost Gir", responsable:"Yesenia Esmeralda García López", whatsapp:"76225963", tipo:"Motos clásicas", vehiculos:"1 - 3 vehículos", ciudad:"San Salvador", cat:"🏍️ MOTOS" },
-  { id:"MF2026-008", club:"Lost Tribers y Lost Gir", responsable:"Verónica Elizabeth Vega Díaz", whatsapp:"50374826602", tipo:"Motos clásicas", vehiculos:"1 - 3 vehículos", ciudad:"San Salvador", cat:"🏍️ MOTOS" },
-  { id:"MF2026-009", club:"Los Tribers", responsable:"Hazel Pamela Cortez Chevez", whatsapp:"61008440", tipo:"Motos deportivas", vehiculos:"1 - 3 vehículos", ciudad:"San Salvador", cat:"🏍️ MOTOS" },
-  { id:"MF2026-010", club:"BMW Car Club SV", responsable:"Nelson Abarca", whatsapp:"50376743431", tipo:"Autos modificados", vehiculos:"Más de 10 vehículos (~15)", ciudad:"La Libertad", cat:"🚗 AUTOS" },
-  { id:"MF2026-011", club:"Iron Horses", responsable:"Emerson Fernando Mancia Portillo", whatsapp:"61673994", tipo:"Autos modificados", vehiculos:"8 - 10 vehículos", ciudad:"San Salvador", cat:"🚗 AUTOS" },
+  { id:"MF2026-001", club:"Latin America Motorcycle (L.A.M.A)", responsable:"Luis Ernesto Garay", whatsapp:"50377337000", tipo:"Motos custom / chopper", dia:"Sábado y Domingo", cat:"🏍️ MOTOS",
+    vehiculos:[
+      {nombre:"Alexander Herrera", modelo:"CF Moto 700 MTA", placa:"M993751", dia:"Sáb"},
+      {nombre:"Raul García", modelo:"Harley Davidson 883 XL", placa:"M32168", dia:"Sáb"},
+      {nombre:"Mauricio Cisneros", modelo:"Kawasaki Z7505", placa:"M72671", dia:"Sáb"},
+      {nombre:"Cesar Gutierrez", modelo:"Suzuki Boulebar C50", placa:"M425577", dia:"Sáb"},
+      {nombre:"Jonathan Gara", modelo:"KTM 890 Adventour", placa:"M881623", dia:"Sáb/Dom"},
+      {nombre:"Miguel Salazar", modelo:"Harley Davidson Fat Bob", placa:"M453833", dia:"Sáb"},
+      {nombre:"Rigoberto Mancia", modelo:"Kawasaki KLR 650", placa:"M809441", dia:"Sáb"},
+      {nombre:"Luis Garay", modelo:"Harley Davidson Breaker", placa:"M991256", dia:"Sáb/Dom"},
+      {nombre:"Marco Amador", modelo:"Kawasaki Vulcan 500cc", placa:"M86828", dia:"Sáb"},
+      {nombre:"Santiago Galeas", modelo:"Honda Goldwing GL1800", placa:"M4353", dia:"Sáb"},
+      {nombre:"Victor Castillo", modelo:"Indian Classic", placa:"M857572", dia:"Sáb"},
+    ]},
+  { id:"MF2026-002", club:"Limitless Car Club", responsable:"Cristhian Hernandez Flores", whatsapp:"76012291", tipo:"Autos modificados", dia:"Por confirmar", cat:"🚗 AUTOS", vehiculos:[] },
+  { id:"MF2026-003", club:"Club VSTROM El Salvador ASC", responsable:"Raúl Calderón Hernández", whatsapp:"78029760", tipo:"Motos custom / chopper", dia:"Por confirmar", cat:"🏍️ MOTOS", vehiculos:[] },
+  { id:"MF2026-004", club:"Participante Individual", responsable:"Alejandro Morales", whatsapp:"78329631", tipo:"Autos modificados", dia:"Por confirmar", cat:"🚗 AUTOS", vehiculos:[] },
+  { id:"MF2026-005", club:"9thGenCivicSV", responsable:"Fernando Martínez", whatsapp:"50373962561", tipo:"Autos modificados", dia:"Por confirmar", cat:"🚗 AUTOS", vehiculos:[] },
+  { id:"MF2026-006", club:"Korean Car Club SV", responsable:"Byron Quezada", whatsapp:"50372391225", tipo:"Autos modificados", dia:"Domingo", cat:"🚗 AUTOS",
+    vehiculos:[
+      {nombre:"Christopher Girón", modelo:"Hyundai Accent Gris", placa:"P68EC9", dia:"Dom"},
+      {nombre:"Cristian Chavarría", modelo:"Hyundai Elantra Celeste", placa:"P810 458", dia:"Dom"},
+      {nombre:"Anthony Ayala", modelo:"Hyundai Elantra Rojo", placa:"P137 D2", dia:"Dom"},
+      {nombre:"Oscar Aguirre", modelo:"Hyundai Veloster Gris", placa:"P7800D", dia:"Dom"},
+      {nombre:"Franklin Vasquez", modelo:"Kia Rio Negro", placa:"P70D66", dia:"Dom"},
+      {nombre:"Margarito Tobar", modelo:"Touring Naranja/Morado", placa:"P972046", dia:"Dom"},
+      {nombre:"Javier Quintanilla", modelo:"Hyundai Veloster Negro", placa:"P948662", dia:"Dom"},
+      {nombre:"Nestor Cerna", modelo:"Hyundai Veloster Blanco", placa:"P11288A", dia:"Dom"},
+      {nombre:"Helen Sotomayor", modelo:"Hyundai Elantra Negro", placa:"P273E1", dia:"Dom"},
+      {nombre:"Gerson Barrera", modelo:"Hyundai Elantra Gris", placa:"P785515", dia:"Dom"},
+      {nombre:"Marlon Mejia", modelo:"Hyundai Elantra GT Azul", placa:"P92A37", dia:"Dom"},
+      {nombre:"Carlos Ayala", modelo:"Honda Civic Celeste", placa:"P301057", dia:"Dom"},
+      {nombre:"Andrés Sorto", modelo:"Kia Forte Negro", placa:"P963206", dia:"Dom"},
+      {nombre:"Josue Martinez", modelo:"Kia Rio Gris", placa:"P953773", dia:"Dom"},
+      {nombre:"Byron Quezada", modelo:"Hyundai Accent Morado", placa:"P921175", dia:"Dom"},
+    ]},
+  { id:"MF2026-007", club:"Lost Tribers y Lost Gir", responsable:"Yesenia García López", whatsapp:"76225963", tipo:"Motos clásicas", dia:"Por confirmar", cat:"🏍️ MOTOS", vehiculos:[] },
+  { id:"MF2026-008", club:"Lost Tribers y Lost Gir", responsable:"Verónica Vega Díaz", whatsapp:"50374826602", tipo:"Motos clásicas", dia:"Por confirmar", cat:"🏍️ MOTOS", vehiculos:[] },
+  { id:"MF2026-009", club:"Los Tribers", responsable:"Hazel Cortez Chevez", whatsapp:"61008440", tipo:"Motos deportivas", dia:"Por confirmar", cat:"🏍️ MOTOS", vehiculos:[] },
+  { id:"MF2026-010", club:"BMW Car Club SV", responsable:"Nelson Abarca", whatsapp:"50376743431", tipo:"Autos modificados", dia:"Sábado", cat:"🚗 AUTOS",
+    vehiculos:[
+      {nombre:"Jimmy Brandon Portillo", modelo:"BMW V8 LS3", placa:"P120B26", dia:"Sáb"},
+      {nombre:"Diego Alfaro Flores", modelo:"BMW Coupé", placa:"P239GLW", dia:"Sáb"},
+      {nombre:"Rodrigo Quintanilla", modelo:"BMW", placa:"P261503", dia:"Sáb"},
+      {nombre:"Kevin Tejada Salazar", modelo:"BMW Convertible", placa:"P76B5A", dia:"Sáb"},
+      {nombre:"Gerardo Valencia Loera", modelo:"BMW Sedan", placa:"P901369", dia:"Sáb"},
+      {nombre:"—", modelo:"BMW Coupe", placa:"P934638", dia:"Sáb"},
+      {nombre:"Aldo Alfaro Villeda", modelo:"BMW", placa:"P399433", dia:"Sáb"},
+      {nombre:"Carlos Garcia Solís", modelo:"BMW", placa:"P679983", dia:"Sáb"},
+      {nombre:"Francisco Sanchez", modelo:"BMW 328i", placa:"P784324", dia:"Sáb"},
+      {nombre:"Fernando Alvarado", modelo:"BMW 335i", placa:"P189076", dia:"Sáb"},
+      {nombre:"Nelson Abarca", modelo:"BMW 328i", placa:"P952529", dia:"Sáb"},
+      {nombre:"Andrés Reyes", modelo:"BMW 320i", placa:"P349D4", dia:"Sáb"},
+      {nombre:"Gabriel Ruiz Artiga", modelo:"BMW", placa:"P952LKT", dia:"Sáb"},
+      {nombre:"Victor Fiallos", modelo:"BMW 128 Convertible", placa:"P2607A", dia:"Sáb"},
+      {nombre:"Euardo Portillo Soto", modelo:"BMW", placa:"P808274", dia:"Sáb"},
+      {nombre:"Alex Antonio Alens", modelo:"BMW 330i E46", placa:"P20773", dia:"Sáb"},
+      {nombre:"José Alejandro Morales", modelo:"BMW 135i JDM", placa:"P196KMH", dia:"Dom"},
+    ]},
+  { id:"MF2026-011", club:"Iron Horses", responsable:"Emerson Mancia Portillo", whatsapp:"61673994", tipo:"Autos modificados", dia:"Por confirmar", cat:"🚗 AUTOS", vehiculos:[] },
+  { id:"MF2026-012", club:"F7LTHY", responsable:"Denis Alexander Cañas Vásquez", whatsapp:"78405471", tipo:"Autos modificados", dia:"Domingo", cat:"🚗 AUTOS",
+    vehiculos:[
+      {nombre:"Miguel Ángel Saravia", modelo:"Evolution", placa:"P351 614", dia:"Dom"},
+      {nombre:"—", modelo:"Supra MK3", placa:"P191 753", dia:"Dom"},
+      {nombre:"Ángel Alvarenga", modelo:"Honda Civic", placa:"P480 148", dia:"Dom"},
+      {nombre:"Jairo Dominguez", modelo:"Subaru WRX", placa:"P6 AAD", dia:"Dom"},
+      {nombre:"Kevin Saravia", modelo:"Subaru STI", placa:"P669 289", dia:"Dom"},
+      {nombre:"Marlon Saravia", modelo:"Audi S3", placa:"P782 630", dia:"Dom"},
+      {nombre:"Juan Carlos", modelo:"Lancer", placa:"P90 394", dia:"Dom"},
+      {nombre:"Denis Cañas", modelo:"Lancer", placa:"P654 131", dia:"Dom"},
+      {nombre:"Benjamin Henríquez", modelo:"Honda Civic", placa:"P785 632", dia:"Dom"},
+      {nombre:"Walter Mata", modelo:"Honda Civic", placa:"P812 602", dia:"Dom"},
+      {nombre:"Yasser Liévano", modelo:"Honda Civic", placa:"P227 035", dia:"Dom"},
+      {nombre:"Mario Minero", modelo:"Toyota AE86", placa:"P375 915", dia:"Dom"},
+      {nombre:"Abel Díaz", modelo:"Subaru WRX", placa:"P24 A76", dia:"Dom"},
+      {nombre:"Brandon Díaz", modelo:"Honda Civic", placa:"P515 321", dia:"Dom"},
+    ]},
+  { id:"MF2026-013", club:"Mini Cooper Club El Salvador", responsable:"Erick Romero", whatsapp:"79465221", tipo:"Autos modificados", dia:"Sábado", cat:"🚗 AUTOS",
+    vehiculos:[
+      {nombre:"Ruben Funes Sánchez", modelo:"Mini Cooper", placa:"P811 632", dia:"Sáb"},
+      {nombre:"Adams Hernández", modelo:"Mini Cooper", placa:"P730 627", dia:"Sáb"},
+      {nombre:"Gerardo Sosa", modelo:"Mini Cooper", placa:"P842 004", dia:"Sáb"},
+      {nombre:"William Lopez", modelo:"Mini Cooper", placa:"P824 869", dia:"Sáb"},
+      {nombre:"Luisa Cascante", modelo:"Mini Cooper", placa:"P2026834", dia:"Sáb"},
+      {nombre:"Jose Alberto Gomez", modelo:"Mini Cooper", placa:"P646 878", dia:"Sáb"},
+      {nombre:"Milton Rodriguez", modelo:"Mini Cooper", placa:"P20 014", dia:"Sáb"},
+      {nombre:"Erick Romero Peraza", modelo:"Mini Cooper", placa:"P632 459", dia:"Sáb"},
+      {nombre:"Elmer Girón Hueso", modelo:"Mini Cooper", placa:"P990JFR", dia:"Sáb"},
+    ]},
+  { id:"MF2026-014", club:"Custom Project Car Club", responsable:"David Castellanos", whatsapp:"61847430", tipo:"Autos modificados", dia:"Domingo", cat:"🚗 AUTOS",
+    vehiculos:[
+      {nombre:"David Castellanos", modelo:"Hyundai Elantra", placa:"P67 732", dia:"Dom"},
+      {nombre:"Willian Rodriguez", modelo:"Kia Forte", placa:"P804 396", dia:"Dom"},
+      {nombre:"Matthew Nolasco", modelo:"Toyota Corolla", placa:"P575 986", dia:"Dom"},
+      {nombre:"Carlos Hernandez", modelo:"Civic EK9", placa:"P382 843", dia:"Dom"},
+      {nombre:"Jonathan Nolasco", modelo:"Honda Fit", placa:"P678 092", dia:"Dom"},
+      {nombre:"David Zamora", modelo:"Nissan B14", placa:"P478 507", dia:"Dom"},
+      {nombre:"Josue Corena", modelo:"Mazda 3", placa:"P656 668", dia:"Dom"},
+      {nombre:"Arnoldo Romero", modelo:"Honda Civic", placa:"P376 808", dia:"Dom"},
+      {nombre:"Ricardo Mejia", modelo:"Honda Fit", placa:"P670 579", dia:"Dom"},
+      {nombre:"Oscar Mejia", modelo:"Subaru Impreza XL", placa:"P377 090", dia:"Dom"},
+    ]},
+  { id:"MF2026-015", club:"The Killers", responsable:"Kevin Castro", whatsapp:"50374883189", tipo:"Autos modificados", dia:"Domingo", cat:"🚗 AUTOS",
+    vehiculos:[
+      {nombre:"Kevin Castro", modelo:"Corvette C8", placa:"P94C04", dia:"Dom"},
+      {nombre:"Kevin Castro", modelo:"Hellcat Challenger", placa:"P102E39", dia:"Dom"},
+      {nombre:"Kevin Castro", modelo:"Mustang", placa:"P19E63", dia:"Dom"},
+    ]},
+  { id:"MF2026-016", club:"Josué / Inv. Renovables", responsable:"Cesar Josue Melendez", whatsapp:"79101300", tipo:"Autos modificados", dia:"Sábado", cat:"🚗 AUTOS",
+    vehiculos:[
+      {nombre:"Ariel Gomez", modelo:"Dodge Challenger", placa:"P865B3", dia:"Sáb"},
+      {nombre:"Josue Magarin", modelo:"Dodge Challenger", placa:"P5786C", dia:"Sáb"},
+      {nombre:"Mike SVR", modelo:"Land Rover", placa:"P72E15", dia:"Sáb"},
+      {nombre:"Henson", modelo:"Subaru WRX", placa:"—", dia:"Sáb"},
+      {nombre:"Kevin Bonilla", modelo:"Dodge Challenger", placa:"P101D7B", dia:"Sáb"},
+    ]},
 ];
+
+function diaClass(d) {
+  if (d === 'Sáb') return 'dia-sab';
+  if (d === 'Dom') return 'dia-dom';
+  return 'dia-both';
+}
 
 function mostrarClub(c) {
   const card = document.getElementById('val-card');
   document.getElementById('val-not-found').classList.remove('show');
+
+  let vehsHtml = '';
+  if (c.vehiculos && c.vehiculos.length > 0) {
+    const rows = c.vehiculos.map(v => `
+      <tr>
+        <td>${v.nombre}</td>
+        <td>${v.modelo}</td>
+        <td><span class="placa-badge">${v.placa}</span></td>
+        <td><span class="${diaClass(v.dia)}">${v.dia}</span></td>
+      </tr>`).join('');
+    vehsHtml = `
+      <p class="vehs-title">🚗 VEHÍCULOS REGISTRADOS (${c.vehiculos.length})</p>
+      <table class="vehs-table">
+        <thead><tr><th>Nombre</th><th>Modelo</th><th>Placa</th><th>Día</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  } else {
+    vehsHtml = `<div class="pending-box">⚠ Lista de vehículos pendiente de confirmar</div>`;
+  }
+
   card.innerHTML = `
     <div class="val-status-ok">✅</div>
     <div class="val-club-name">${c.club}</div>
-    <div class="val-tipo"><span class="val-badge">${c.cat} &nbsp;·&nbsp; ${c.tipo}</span></div>
-    <div class="val-info-row"><span class="val-info-label">ID Participante</span><span class="val-info-value" style="color:var(--lime)">${c.id}</span></div>
+    <div class="val-tipo"><span class="val-badge">${c.cat} · ${c.tipo}</span></div>
+    <div class="val-info-row"><span class="val-info-label">ID</span><span class="val-info-value" style="color:var(--lime)">${c.id}</span></div>
     <div class="val-info-row"><span class="val-info-label">Responsable</span><span class="val-info-value">${c.responsable}</span></div>
     <div class="val-info-row"><span class="val-info-label">WhatsApp</span><span class="val-info-value">${c.whatsapp}</span></div>
-    <div class="val-info-row"><span class="val-info-label">Ciudad</span><span class="val-info-value">${c.ciudad}</span></div>
-    <div class="val-info-row"><span class="val-info-label">N° Vehículos</span><span class="val-info-value">${c.vehiculos}</span></div>
+    <div class="val-info-row"><span class="val-info-label">Día de asistencia</span><span class="val-info-value">${c.dia}</span></div>
+    ${vehsHtml}
     <div class="val-stamp">✅ PARTICIPANTE OFICIAL — MOTOR FEST 2026</div>
   `;
   card.classList.add('show');
@@ -270,7 +412,12 @@ function validarClub() {
   const card = document.getElementById('val-card');
   const nf = document.getElementById('val-not-found');
   if (q.length < 2) { card.classList.remove('show'); nf.classList.remove('show'); return; }
-  const found = CLUBES.find(c => c.club.toLowerCase().includes(q) || c.responsable.toLowerCase().includes(q) || c.id.toLowerCase().includes(q));
+  const found = CLUBES.find(c =>
+    c.club.toLowerCase().includes(q) ||
+    c.responsable.toLowerCase().includes(q) ||
+    c.id.toLowerCase().includes(q) ||
+    (c.vehiculos && c.vehiculos.some(v => v.placa.toLowerCase().includes(q) || v.nombre.toLowerCase().includes(q)))
+  );
   if (found) { mostrarClub(found); nf.classList.remove('show'); }
   else { card.classList.remove('show'); nf.classList.add('show'); }
 }
@@ -280,7 +427,8 @@ const list = document.getElementById('val-list');
 CLUBES.forEach(c => {
   const div = document.createElement('div');
   div.className = 'val-club-item';
-  div.innerHTML = `<div><div class="ci-name">${c.cat} ${c.club}</div><div class="ci-resp">${c.responsable}</div></div><span class="ci-id">${c.id}</span>`;
+  const vCount = c.vehiculos.length > 0 ? `${c.vehiculos.length} vehículos` : 'pendiente';
+  div.innerHTML = `<div><div class="ci-name">${c.cat} ${c.club}</div><div class="ci-resp">${c.responsable} · ${vCount}</div></div><span class="ci-id">${c.id}</span>`;
   div.onclick = () => { mostrarClub(c); window.scrollTo({top:0,behavior:'smooth'}); };
   list.appendChild(div);
 });
@@ -293,6 +441,19 @@ function switchTab(tab) {
 }
 ['parrilla','autos','validar'].forEach(t => {
   document.getElementById('tab-btn-'+t).addEventListener('touchend', function(e){ e.preventDefault(); switchTab(t); });
+});
+
+// Detector QR
+window.addEventListener('DOMContentLoaded', function() {
+  const params = new URLSearchParams(window.location.search);
+  const clubId = params.get('club');
+  if (clubId) {
+    switchTab('validar');
+    const found = CLUBES.find(c => c.id === clubId);
+    if (found) { mostrarClub(found); document.getElementById('val-input').value = found.club; }
+    else { document.getElementById('val-not-found').classList.add('show'); }
+    setTimeout(() => window.scrollTo({top:0,behavior:'smooth'}), 100);
+  }
 });
 
 async function uploadToCloudinary(file) {
@@ -333,24 +494,6 @@ function submitAutos() {
   if (!validate(['a-club','a-ciudad','a-tipo','a-responsable','a-tel','a-nvehiculos'])) { alert('Por favor completá todos los campos obligatorios (*)'); return; }
   sendViaForm({ tipo:'autos', club:document.getElementById('a-club').value, ciudad:document.getElementById('a-ciudad').value, tipo:document.getElementById('a-tipo').value, responsable:document.getElementById('a-responsable').value, tel:document.getElementById('a-tel').value, email:document.getElementById('a-email').value, nvehiculos:document.getElementById('a-nvehiculos').value, comentario:document.getElementById('a-comentario').value, fotos_vehiculos:document.getElementById('url-autos').value }, 'form-autos','btn-autos','sending-autos','success-autos');
 }
-
-// Detectar parámetro ?club= al cargar (para QR)
-window.addEventListener('DOMContentLoaded', function() {
-  const params = new URLSearchParams(window.location.search);
-  const clubId = params.get('club');
-  if (clubId) {
-    switchTab('validar');
-    const found = CLUBES.find(c => c.id === clubId);
-    if (found) {
-      mostrarClub(found);
-      document.getElementById('val-input').value = found.club;
-    } else {
-      document.getElementById('val-not-found').classList.add('show');
-    }
-    setTimeout(() => window.scrollTo({top:0,behavior:'smooth'}), 100);
-  }
-});
 </script>
 </body>
 </html>
-<!-- QR DETECTOR - ya incluido en el script principal -->
